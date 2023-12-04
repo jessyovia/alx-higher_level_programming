@@ -1,12 +1,8 @@
 #!/usr/bin/python3
-
 if __name__ == "__main__":
     import sys
-
-    # Extract command-line arguments excluding the script name
-    arguments = sys.argv[1:]
-
-    # Sum the integer values of the arguments
-    total = sum(int(arg) for arg in arguments if arg.isdigit())
-
+    total = 0
+    for arg in sys.argv:
+        if arg != sys.argv[0]:
+            total += int(arg)
     print(total)
