@@ -16,4 +16,3 @@ if __name__ == "__main__":
 
         for i, arg in enumerate(arguments, start=1):
             print("{:d}: {:s}".format(i, arg))
-
