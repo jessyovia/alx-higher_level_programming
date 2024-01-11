@@ -1,38 +1,43 @@
-#include <Python.h>
+#include "Python.h"
 
 /**
- * print_python_string - Prints information about a Python string object
- * @p: Pointer to a Python object (assumed to be a string)
+ * print_python_string - Function that prints
+ *  information about Python strings
+ * @p: PyObject representing a Python string
+ *
+ * Description: This function prints information about
+ *  Python string objects,
+ * including type, length, and value.
  */
-void print_python_string(PyObject *p) {
-    if (PyUnicode_Check(p)) {
-        Py_UCS1 *value;
-        Py_ssize_t length;
-        Py_ssize_t i;
 
-        printf("[.] string object info\n");
-        printf("  type: %s\n", PyUnicode_IS_COMPACT_ASCII(p) ? "compact ascii" : "compact unicode object");
-        length = PyUnicode_GET_LENGTH(p);
-        printf("  length: %ld\n", length);
+void print_python_string(PyObject *p)
+{
+	long int str_length;
 
-        if (PyUnicode_IS_COMPACT_ASCII(p)) {
-            value = PyUnicode_1BYTE_DATA(p);
-            printf("  value: ");
-            for (i = 0; i < length; i++) {
-                printf("%c", value[i]);
-            }
-        } else {
-            value = PyUnicode_DATA(p);
-            printf("  value: ");
-            for (i = 0; i < length; i++) {
-                printf("\\u%04x", value[i]);
-            }
-        }
+	fflush(stdout);
 
-        printf("\n");
-    } else {
-        printf("[.] string object info\n");
-        printf("  [ERROR] Invalid String Object\n");
-    }
+	/* Print header for string object information */
+	printf("[.] string object info\n");
+
+	/* Check if the given PyObject is a string */
+	if (strcmp(p->ob_type->tp_name, "str") != 0)
+	{
+		printf("  [ERROR] Invalid String Object\n");
+		return;
+	}
+
+	/* Extract the length of the string */
+	str_length = ((PyASCIIObject *)(p))->length;
+
+	/* Check if the string is a compact ASCII or compact Unicode object */
+	if (PyUnicode_IS_COMPACT_ASCII(p))
+		printf("  type: compact ascii\n");
+	else
+		printf("  type: compact unicode object\n");
+
+	/* Print the length of the string */
+	printf("  length: %ld\n", str_length);
+
+	/* Print the value of the string */
+	printf("  value: %ls\n", PyUnicode_AsWideCharString(p, &str_length));
 }
-
