@@ -1,10 +1,10 @@
 #!/usr/bin/node
-function add(a, b) {
-  const numA = parseInt(a);
-  const numB = parseInt(b);
-  if (isNaN(numA) || isNaN(numB)) {
-    return NaN;
-  }
-  return numA + numB;
+
+// Define func 'add' that takes two param. 'a' and 'b' and returns the sum
+function add (a, b) {
+  return a + b;
 }
-console.log(add(process.argv[2], process.argv[3]));
+
+console.log(
+  add(Number.parseInt(process.argv[2]), Number.parseInt(process.argv[3]))
+);
