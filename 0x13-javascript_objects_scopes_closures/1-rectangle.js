@@ -1,10 +1,9 @@
 #!/usr/bin/node
 
 class Rectangle {
+  // Constructor with two parameters w and h
   constructor (w, h) {
-    if (w <= 0 || h <= 0) {
-      return;
-    }
+    // Initialize instance attribute width/height
     this.width = w;
     this.height = h;
   }
