@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Creates the State “California” with the City “San Francisco”"""
+"""Creates the State 'California' with the City San 'Francisco'"""
+
 
 import sys
 from sqlalchemy import create_engine
@@ -7,14 +8,15 @@ from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
 from relationship_city import City
 
+
 if __name__ == '__main__':
     if len(sys.argv) == 4:
-        username = sys.argv[1]
-        password = sys.argv[2]
-        database = sys.argv[3]
+        user = sys.argv[1]
+        passW = sys.argv[2]
+        dataB = sys.argv[3]
 
         DATABASE_URL = "mysql://{}:{}@localhost:3306/{}".format(
-            username, password, database
+            user, passW, dataB
         )
 
         engine = create_engine(DATABASE_URL)
@@ -23,13 +25,11 @@ if __name__ == '__main__':
         Session = sessionmaker(bind=engine)
         session = Session()
 
-        # Create California state
+        """State 'California' and City 'San Francisco'"""
         california = State(name="California")
-        session.add(california)
-        session.flush()
+        san_francisco = City(name="San Francisco", state=california)
 
-        # Create San Francisco city
-        san_francisco = City(name="San Francisco", state_id=california.id)
-        session.add(san_francisco)
-
+        """Add and commit changes"""
+        session.add(california, san_francisco)
         session.commit()
+        session.close()
