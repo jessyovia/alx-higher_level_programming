@@ -1,25 +1,33 @@
-# Project Mirror: "0x10. Python - Network #0"
+# 0x10. Python - Network #0
 
 ## Overview
-This project consists of a simple Bash script designed to retrieve the size of the response body from a given URL using cURL. It serves as a convenient tool for individuals who need to quickly and efficiently determine the size of the content returned by a web server when provided with a URL. Whether you're a developer, system administrator, or anyone else working with web-based applications, this script can be invaluable for monitoring or analyzing HTTP responses.
+This project consists of a series of Bash scripts designed to interact with web servers using cURL. Each script performs a specific HTTP request and displays the relevant information based on the response received from the server.
 
-## Purpose
-The primary purpose of this script is to provide a straightforward solution for measuring the size of HTTP response bodies. By using cURL, it simplifies the process of fetching data from web servers and extracting relevant information, such as the content size. This can be particularly useful in various scenarios, including debugging network issues, optimizing web applications, or analyzing website performance.
+## Requirements
+General requirements and guidelines for the project are outlined below:
 
-## How It Works
-The Bash script utilizes the cURL command-line tool to send a request to the specified URL and retrieve the response body. It then extracts the size of the response body in bytes and displays it to the user. This straightforward approach allows for quick and accurate measurement of the content size, making it easy to gather essential metrics for further analysis or troubleshooting.
+- Allowed editors: vi, vim, emacs
+- A README.md file, at the root of the folder of the project, is mandatory
+- All scripts must be tested on Ubuntu 20.04 LTS
+- All Bash scripts should be exactly 3 lines long
+- All files should end with a new line
+- All files must be executable
+- The first line of all Bash files should be `#!/bin/bash`
+- The second line of all Bash scripts should be a comment explaining the script's purpose
+- All curl commands must have the option `-s` (silent mode)
+- All files will be interpreted/compiled on Ubuntu 20.04 LTS using Python 3.8.5
+- Python code should adhere to the pycodestyle guidelines
+- All modules, classes, and functions should be documented
 
-## Acknowledgements
-Special thanks to ALX Africa for providing the platform and resources for learning. Without their support, this project would not have been possible.
+## Tasks
+The project tasks are as follows:
 
-## Authors
-**Jessica Oviahon**
-- GitHub: [jessicaovia](https://github.com/jessyovia)
+0. cURL body size
+1. cURL to the end
+2. cURL Method
+3. cURL only methods
 
-## Resources
-For additional information on HTTP (HyperText Transfer Protocol) and HTTP Cookies, consider exploring the following resources:
+Each task involves writing a Bash script to accomplish a specific HTTP request and display the corresponding response.
 
-- [HTTP Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-- [HTTP Cookies Overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
-
----
+## Author
+Authored by Jessica Oviahon
