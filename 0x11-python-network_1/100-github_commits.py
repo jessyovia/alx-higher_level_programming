@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 """
-Python script that takes your GitHub credentials (username and password)
-and uses the GitHub API to display your id.
+Lists 10 the 10 most recent commits
+Of a given repository by the user
 """
 
-import requests
+
 import sys
+import requests
+
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    url = 'https://api.github.com/user'
-    try:
-        response = requests.get(url, auth=(username, password))
-        if response.status_code == 200:
-            print(response.json().get('id'))
-        else:
-            print(None)
-    except Exception as e:
-        print(None)
+    address = 'https://api.github.com/repos/{}/{}/commits'
+    ans = requests.get(address.format(sys.argv[2], sys.argv[1]))
+    info = ans.json()
+
+    for commit in info[:10]:
+        sha = commit['sha']
+        can = commit['commit']['author']['name']
+        print("{}: {}".format(sha, can))
