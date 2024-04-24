@@ -1,4 +1,3 @@
-
 #!/usr/bin/node
 // Prints the num of movies where the char “Wedge Antilles” is present
 const request = require('request');
